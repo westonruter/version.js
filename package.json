@@ -1,0 +1,13 @@
+{
+  "name": "version.js",
+  "version": "0.1.0",
+  "author": "Weston Ruter (@westonruter)",
+  "description": "Object for representing and comparing software versions",
+  "contributors": [
+    "Weston Ruter (@westonruter)"
+  ],
+  "repository": "git@github.com:westonruter/version.js.git",
+  "scripts": {
+    "test": "node tests"
+  }
+}

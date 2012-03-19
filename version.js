@@ -1,9 +1,9 @@
 /**
  * @author Weston Ruter (@westonruter)
- * @url https://gist.github.com/2052150
+ * @url https://github.com/westonruter/version.js
  */
 
-function Version(value) {
+function Version (value) {
     this.set(value);
 };
 
@@ -12,7 +12,10 @@ function Version(value) {
  * @param {String|Array} value
  */
 Version.prototype.set = function (value) {
-    if (typeof value === 'string') {
+    if (typeof value === 'undefined'){
+        value = [0,0,0];
+    }
+    else if (typeof value === 'string') {
         value = value.split('.');
     }
     // Inspired by http://maymay.net/blog/2008/06/15/ridiculously-simple-javascript-version-string-to-object-parser/
@@ -29,6 +32,7 @@ Version.prototype.toString = function () {
     ].join('.');
 };
 
+
 /**
  * Return an array containing the major, minor, and patch
  * @returns {Array}
@@ -40,6 +44,7 @@ Version.prototype.valueOf = function () {
         this.patch
     ];
 };
+
 
 /**
  * Compare one instance with another
@@ -71,6 +76,7 @@ Version.prototype.cmp = function (that) {
     return 0;
 };
 
+
 /**
  * Less than
  * @param {Version} that instance to compare with
@@ -80,14 +86,16 @@ Version.prototype.lt = function (that) {
     return this.cmp(that) === -1;
 };
 
+
 /**
- * Less than
+ * Greater than
  * @param {Version} that instance to compare with
  * @returns {Boolean} true if this is greater than that
  */
 Version.prototype.gt = function (that) {
     return this.cmp(that) === 1;
 };
+
 
 /**
  * Equals
@@ -97,3 +105,8 @@ Version.prototype.gt = function (that) {
 Version.prototype.eq = function (that) {
     return this.cmp(that) === 0;
 };
+
+
+if (typeof module !== 'undefined') {
+    module.exports = Version;
+}
