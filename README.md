@@ -5,7 +5,8 @@ project did a major SEO fail. Either way, you should probably rely on *node-semv
 and not this project._
 
 I couldn't find any elegant way to represent software version numbers (version
-names) in JavaScript. So I set out to create a `Version` object which can be
+names) in JavaScript which consist of a major, minor, and patch version number. 
+So I set out to create a `Version` object which can be
 used to represent a version and compare it with other versions.
 
 Works either in the browser or in as a Node module.
