@@ -15,7 +15,7 @@ Works either in the browser or in as a Node module.
 
 ```js
 var v1 = new Version('7.1');
-var v2 = new Version('8.0.1');
+var v2 = new Version([8,0,1]);
 assert(v1.lt(v2) === true);
 assert(v2.gt(v2) === true);
 assert(v1.toString() === '7.1.0');
