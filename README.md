@@ -1,5 +1,9 @@
 # version.js
 
+_**UPDATE:** Either I did a major Google fail or the [node-semver](https://github.com/isaacs/node-semver)
+project did a major SEO fail. Either way, you should probably rely on *node-semver*
+and not this project._
+
 I couldn't find any elegant way to represent software version numbers (version
 names) in JavaScript. So I set out to create a `Version` object which can be
 used to represent a version and compare it with other versions.
