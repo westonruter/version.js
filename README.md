@@ -1,8 +1,10 @@
-# Version.js
+# version.js
 
 I couldn't find any elegant way to represent software version numbers (version
 names) in JavaScript. So I set out to create a `Version` object which can be
 used to represent a version and compare it with other versions.
+
+Works either in the browser or in as a Node module.
 
 ## Examples
 
@@ -17,3 +19,7 @@ v2.minor = 1;
 v2.patch = 0;
 assert(v1.eq(v2) === true);
 ```
+
+## Tests
+
+Extensive [tests](blob/master/tests/index.js), run via `npm test`.

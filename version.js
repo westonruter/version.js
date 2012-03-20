@@ -5,19 +5,52 @@
 
 function Version (value) {
     this.set(value);
-};
+}
 
 /**
  * Update the value of an instance
  * @param {String|Array} value
  */
 Version.prototype.set = function (value) {
-    if (typeof value === 'undefined'){
+    // Empty version (undefined, null, false, etc)
+    if (!value){
         value = [0,0,0];
     }
+    // Cloning version
+    else if (value instanceof Version) {
+        value = value.valueOf();
+    }
+    // Version from float
+    else if(typeof value === 'number'){
+        if (value < 0) {
+            throw new TypeError('Expected number to be positive');
+        }
+        value = value.toString(10).split('.');
+    }
+    // Version from string
     else if (typeof value === 'string') {
+        if (!/^\d+(\.\d+)*$/.test(value)) {
+            throw TypeError('Version string is invalid');
+        }
         value = value.split('.');
     }
+    // Version from boolean
+    else if (value === true) {
+        value = [1,0,0];
+    }
+    // From an object
+    else if (value.hasOwnProperty('major') || value.hasOwnProperty('minor') || value.hasOwnProperty('patch')) {
+        value = [
+            value.major,
+            value.minor,
+            value.patch
+        ];
+    }
+    // If not an array, then die
+    else if ( !(value instanceof Array) ) {
+        throw new TypeError('Unexpected value supplied when setting version');
+    }
+
     // Inspired by http://maymay.net/blog/2008/06/15/ridiculously-simple-javascript-version-string-to-object-parser/
     this.major = parseInt(value[0], 10) || 0;
     this.minor = parseInt(value[1], 10) || 0;
